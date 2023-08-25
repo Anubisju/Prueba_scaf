@@ -1,18 +1,39 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tweets</h1>
+<h1>TWEETS</h1>
 
-<div id="tweets">
+<div class="container-fluid" style="width: 60%">
+<div class="table-responsive-md">
+<table class="table table-bordered">
+
+<thead class="table-danger text-center">
+<tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">Description</th>
+                      <th scope="col">Show Tweet</th>
+                </tr>
+
+</thead>
+<tbody>
   <% @tweets.each do |tweet| %>
-    <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
-    <p>----------------------------------------------------------------</p>
+     <tr>
+                        <td><%= tweet.Username %></td>
+                        <td><%= tweet.Description %></td>
+                        <td> <%= link_to "Show this tweet", tweet %></td>
+    <tr>
   <% end %>
-  
+  </tbody>
+  </table>
+  <div class="digg_pagination">
+
+            <%= will_paginate(@tweets, :renderer => WillPaginate::ActionView::LinkRenderer) %>
+        </div>
+</div>
+
+
+</div>
 </div>
 
 
 
-<%= link_to "New tweet", new_tweet_path %>
+<h2><%= link_to "New tweet", new_tweet_path %> </h2>
